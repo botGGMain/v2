@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "cards" ADD COLUMN     "cvv" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "month" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "year" TEXT NOT NULL DEFAULT '';

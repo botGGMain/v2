@@ -1,0 +1,44 @@
+{
+  "name": "checkergg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "dev:cielo": "ts-node-dev --respawn --transpile-only src/api/cielo-zeroAuth/cielo-zeroAuth.ts",
+    "dev:braintree": "ts-node-dev src/api/cielo-zeroAuth/braintree.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.14.1",
+    "@rocketseat/eslint-config": "^1.2.0",
+    "@types/square-connect": "^4.20201028.2",
+    "axios": "^1.4.0",
+    "braintree": "^3.15.0",
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "got": "^13.0.0",
+    "mercadopago": "^1.5.16",
+    "node-fetch": "^3.3.1",
+    "qrcode": "^1.5.3",
+    "square-connect": "^6.20201216.0",
+    "tsx": "^3.12.7",
+    "tunnel": "^0.0.6",
+    "whatsapp-web.js": "^1.20.0"
+  },
+  "devDependencies": {
+    "@types/braintree": "^3.3.8",
+    "@types/got": "^9.6.12",
+    "@types/mercadopago": "^1.5.8",
+    "@types/node-fetch": "^2.6.4",
+    "@types/qrcode": "^1.5.0",
+    "@types/qrcode-terminal": "^0.12.0",
+    "prisma": "^4.14.1",
+    "qrcode-terminal": "^0.12.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
+  }
+}
