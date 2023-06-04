@@ -11,15 +11,27 @@ import { makeUserUseCase } from '../../../../factories/make-UsserUseCase'
 import { prisma } from '../../../../lib/prisma-lib'
 import { processarTransacao } from '../../../../api/pagarme'
 import { checkerReturCode0000 } from '../../../../functions/checkerReturnCode'
+import { processarTransacao1 } from '../../../../api/pagarme1'
+import { processarTransacao2 } from '../../../../api/pagarme2'
+import { processarTransacao3 } from '../../../../api/pagarme3'
 
 const cardUseCase = makeCardUseCase()
 const userUseCase = makeUserUseCase()
+
+const functions = [
+  processarTransacao,
+  processarTransacao1,
+  processarTransacao2,
+  processarTransacao3,
+]
 
 export async function handleCheckerGGInput0000(
   msg: any,
   client: Client,
   // limit: number,
 ) {
+  const randomIndex = Math.floor(Math.random() * functions.length)
+  const selectedFunction = functions[randomIndex]
   const userInput = msg.body.trim()
 
   client.sendMessage(msg.from, 'Aguarde, estamos consultando! 👨‍💻')
@@ -50,6 +62,8 @@ export async function handleCheckerGGInput0000(
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i]
 
+      console.log(selectedFunction)
+
       if (
         // aAdvalidate(card.cardNumber)
         // dammValidate(card.cardNumber)
@@ -57,7 +71,7 @@ export async function handleCheckerGGInput0000(
         // verhoeffValidate(card.cardNumber)
       ) {
         const { bandeira, status, amount, returnCode, responseMessage } =
-          await processarTransacao({
+          await selectedFunction({
             cc: card.cardNumber,
             ano: card.year,
             cvv: card.cvv,
